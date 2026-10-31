@@ -1,0 +1,74 @@
+/*
+ * Boussole — jetons de design
+ *
+ * Inspiration : le papier des cartes de relevé (vert-gris froid), l'encre d'arpenteur,
+ * et le laiton des instruments de navigation pour l'accent.
+ * Une seule chose audacieuse : le tracé du parcours des six phases.
+ */
+:root {
+  --paper: #eef1ec;
+  --surface: #f8faf6;
+  --ink: #1e2b33;
+  --ink-soft: #4d5c63;
+  --line: #c6cfc5;
+  --brass: #94650f;      /* accent : position actuelle, action principale */
+  --brass-soft: #f1e6cf;
+  --sage: #3f6a5a;       /* phase terminée */
+  --danger: #9e3426;
+  --focus: #2a5fa8;
+
+  --font-read: 'Literata', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Échelle typographique (quarte augmentée, base 17px) */
+  --step--1: 0.85rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.3rem;
+  --step-2: 1.65rem;
+  --step-3: 2.15rem;
+  --step-4: 2.9rem;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2.25rem;
+  --space-7: 3.5rem;
+
+  --radius-control: 6px;
+  --radius-panel: 10px;
+  --measure: 68ch;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #131a1e;
+    --surface: #1a2328;
+    --ink: #e3e8e2;
+    --ink-soft: #a3afab;
+    --line: #34434b;
+    --brass: #d9a647;
+    --brass-soft: #3a2f1a;
+    --sage: #80aa98;
+    --danger: #e0806f;
+    --focus: #8fb4ec;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper: #131a1e;
+  --surface: #1a2328;
+  --ink: #e3e8e2;
+  --ink-soft: #a3afab;
+  --line: #34434b;
+  --brass: #d9a647;
+  --brass-soft: #3a2f1a;
+  --sage: #80aa98;
+  --danger: #e0806f;
+  --focus: #8fb4ec;
+  color-scheme: dark;
+}

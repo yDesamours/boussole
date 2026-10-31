@@ -1,0 +1,95 @@
+/* Mise en page commune aux pages de lecture : le guide et l'exemple. */
+
+.doc-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.doc-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 46rem;
+}
+
+.doc-head h1 {
+  font-size: var(--step-4);
+  font-weight: 400;
+}
+
+.doc-layout {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.doc-layout > .toc {
+  position: sticky;
+  top: var(--space-4);
+  max-height: calc(100vh - 2 * var(--space-4));
+  overflow-y: auto;
+  padding-right: var(--space-2);
+}
+
+.doc-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.doc-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  scroll-margin-top: var(--space-4);
+}
+
+.doc-section > h2 {
+  font-size: var(--step-3);
+  font-weight: 400;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.doc-subsection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  scroll-margin-top: var(--space-4);
+}
+
+.doc-subsection > h3 {
+  font-size: var(--step-2);
+}
+
+@media (max-width: 60rem) {
+  .doc-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-layout > .toc {
+    position: static;
+    max-height: none;
+    padding: var(--space-4);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+  }
+}
+
+@media (max-width: 40rem) {
+  .doc-head h1 {
+    font-size: var(--step-3);
+  }
+
+  .doc-section > h2 {
+    font-size: var(--step-2);
+  }
+
+  .doc-subsection > h3 {
+    font-size: var(--step-1);
+  }
+}

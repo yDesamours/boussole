@@ -19,18 +19,25 @@ npm run preview     # sert la version de production
 
 Le dossier `dist/` est un site statique : il peut être servi depuis n'importe quel hébergement statique ou en local.
 
+### Avec un dev container
+
+Le dossier `.devcontainer/` fournit un environnement prêt à l'emploi (Node 24, extensions Vue et Vitest). Dans VS Code, ouvre le projet puis choisis **Dev Containers: Reopen in Container**, ou crée un Codespace sur GitHub. Les dépendances s'installent automatiquement ; lance ensuite `npm run dev`. Le port 5173 est redirigé et s'ouvre dans ton navigateur.
+
 ## Organisation
 
 ```
 src/
   types/schema.ts      Le schéma des données : contenu du framework, projets et itérations, modèle d'export
-  content/             Le contenu pédagogique, une phase par fichier (seule Comprendre est rédigée)
-  lib/                 Logique pure : projets, itérations, statut des phases, détection du flou
+  types/guide.ts       Les blocs de contenu du guide et du projet exemple
+  content/             Le contenu pédagogique : une phase par fichier,
+                       guide.ts (le guide du framework) et example.ts (le projet exemple)
+  lib/                 Logique pure : projets, itérations, statut, détection du flou, sauvegarde, documents
+  lib/exporters/       Un exporteur par format : Markdown, HTML, PDF (pdfmake), Word (docx)
   db/database.ts       Stockage local (Dexie / IndexedDB)
   stores/projects.ts   État de l'application et sauvegarde automatique (Pinia)
-  views/               Écrans : liste des projets, projet, phase, nouvelle itération
-  components/          Parcours des phases, champs de saisie, indicateur d'enregistrement
-tests/                 Tests du détecteur de flou, de la logique des itérations et du stockage
+  views/               Écrans : projets, projet, phase, nouvelle itération, guide, exemple
+  components/          Parcours, champs avec alertes et exemples, checklist, rappel du persona, export, guide
+tests/                 Contenu des phases, détecteur de flou, itérations, stockage, sauvegarde, documents, guide
 ```
 
 ## Principes de conception
@@ -42,10 +49,15 @@ tests/                 Tests du détecteur de flou, de la logique des itération
 
 ## Avancement
 
-| Cycle | Contenu | État |
+La version 1.0 couvre tout le périmètre du MVP défini au cadrage.
+
+| Partie | Contenu | État |
 |---|---|---|
-| 1. Fondations | Projets, itérations, stockage, navigation, saisie | Terminé |
-| 2. Phase 1 complète | Explications, exemples, checklist, alertes, export Markdown, sauvegarde en fichier | À faire |
-| 3. Phases 2 et 3 | Contenu, export HTML, PDF et Word | À faire |
-| 4. Phases 4 à 6 | Contenu | À faire |
-| 5. Finitions | Ajustements suite aux retours | À faire |
+| Fondations | Projets, itérations, stockage local, navigation, saisie, checklist de sortie | Terminé |
+| Contenu | Les six phases : explication, champs, exemples, alertes, checklist | Terminé |
+| Aide dans les phases | Explication repliable, exemples par champ, alertes de flou, rappel du persona | Terminé |
+| Documents | Export d'une phase ou d'une itération en Markdown, HTML, PDF et Word | Terminé |
+| Pédagogie | Guide du framework et projet exemple, consultables sans créer de projet | Terminé |
+| Sauvegarde | Export et import de fichiers, aperçu avant import, sans perte de travail récent | Terminé |
+
+Pistes pour une prochaine itération, à décider après usage réel : synchronisation entre appareils (via GitHub), choix projet par projet lors d'un import en conflit, rappel de sauvegarde.

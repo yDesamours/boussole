@@ -1,0 +1,41 @@
+{
+  "name": "Boussole",
+
+  // Node 24 (LTS) : Vite 8 et Vitest 5 demandent Node 22.12 ou plus récent.
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:24-bookworm",
+
+  // Indique à vite.config.ts qu'il tourne dans un conteneur (surveillance des fichiers adaptée à Windows).
+  "containerEnv": {
+    "BOUSSOLE_DEVCONTAINER": "true"
+  },
+
+  // Installation exacte des dépendances, d'après package-lock.json.
+  "postCreateCommand": "npm ci",
+
+  "forwardPorts": [5173, 4173],
+  "portsAttributes": {
+    "5173": {
+      "label": "Boussole (développement)",
+      "onAutoForward": "openBrowser"
+    },
+    "4173": {
+      "label": "Boussole (aperçu de production)",
+      "onAutoForward": "notify"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "vitest.explorer",
+        "EditorConfig.EditorConfig"
+      ],
+      "settings": {
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "editor.tabSize": 2,
+        "files.eol": "\n"
+      }
+    }
+  }
+}
